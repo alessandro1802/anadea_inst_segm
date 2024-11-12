@@ -11,9 +11,10 @@ pip install -r requirements.txt
 The [LIVECell dataset](https://sartorius-research.github.io/LIVECell/) contains a high-quality, manually annotated and expert-validated cell images that is the largest of its kind to date, consisting of over 1.6 million cells from a diverse set of cell morphologies and culture densities.
 ```shell
 mkdir -p data/LIVECell_dataset_2021/annotations
-aws s3 sync s3://livecell-dataset/LIVECell_dataset_2021/annotations/ ./data/LIVECell_dataset_2021
-aws s3api get-object --bucket livecell-dataset  --key LIVECell_dataset_2021/images.zip ./data/LIVECell_dataset_2021/images.zip
-unzip data/LIVECell_dataset_2021/images.zip
+aws s3 sync s3://livecell-dataset/LIVECell_dataset_2021/annotations/ ./data/LIVECell_dataset_2021/
+mv data/LIVECell_dataset_2021/LIVECell* data/LIVECell_dataset_2021/annotations/
+aws s3api get-object --bucket livecell-dataset --key LIVECell_dataset_2021/images.zip ./data/LIVECell_dataset_2021/images.zip
+unzip data/LIVECell_dataset_2021/images.zip -d data/LIVECell_dataset_2021/
 ```
 
 ## File-structure
